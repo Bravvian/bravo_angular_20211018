@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVideoComponent implements OnInit {
 
+  fileName = '';
+
+  title = ''
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  onFileSelected(event){}
+
+  sendVideo(){}
 
 }

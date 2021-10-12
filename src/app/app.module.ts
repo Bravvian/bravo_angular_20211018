@@ -3,26 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRouting } from './app.routing';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { AddVideoComponent } from './pages/add-video/add-video.component';
-import { ListComponent } from './components/list/list.component';
-import { CardComponent } from './components/card/card.component';
-import { TopbarComponent } from './components/topbar/topbar.component';
 import {HomePageModule} from './pages/home-page/home-page.module';
 import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TopbarComponent} from './components/topbar/topbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CardComponent,
-    TopbarComponent
+    TopbarComponent,
+
   ],
   imports: [
     BrowserModule,
     HomePageModule,
     AppRouting,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
