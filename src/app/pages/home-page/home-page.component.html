@@ -2,5 +2,5 @@
   <button (click)="goToAddVideoPage()" mat-flat-button color="primary">Import Video</button>
 </div>
 
-<app-list></app-list>
+<app-list *ngIf="videosList" [items]="videosList"></app-list>
 

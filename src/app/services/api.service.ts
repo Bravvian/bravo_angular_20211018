@@ -22,9 +22,9 @@ export class ApiService {
     );
   }
 
-  put(url: string, body: any, options: any = {}): Promise<any> {
+  post(url: string, body: any, options: any = {}): Promise<any> {
     options.observe = 'response';
-    return this.http.put(url, body, options).toPromise().then(
+    return this.http.post(url, body, options).toPromise().then(
       response => {
         return response;
       },

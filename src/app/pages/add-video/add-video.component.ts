@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {VideoService} from '../../services/video.service';
 
 @Component({
   selector: 'app-add-video',
@@ -7,17 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVideoComponent implements OnInit {
 
-  fileName = '';
+  file: File;
 
-  title = ''
+  title = '';
 
-  constructor() { }
+  disableButton = true;
+
+  constructor(
+    private videoService: VideoService
+  ) { }
 
   ngOnInit() {
   }
 
-  onFileSelected(event){}
+  onFileSelected(event) {
+    const file: File = event.target.files[0];
 
-  sendVideo(){}
+    if (file) {
+      this.file = file;
+    }
+  }
+
+  async sendVideo() {
+    await this.videoService.sendVideo(this.file, this.title);
+  }
 
 }

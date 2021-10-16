@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: any;
+
+  thumbnail = '';
+
+  title = '';
+  subtitle = '-';
+  prevUrl: any;
+
+  constructor(
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit() {
+    this.handleTitle();
+  }
+
+  playVideo() {
+
+  }
+
+  handleTitle() {
+    const titleArray = this.item.title.split('-');
+    this.title = titleArray[0];
+    if (titleArray[1]) {
+      this.subtitle = titleArray[1];
+    }
+  }
+
+  setDefaultImage() {
+    this.thumbnail = 'assets/images/image-not-found.jpg';
   }
 
 }

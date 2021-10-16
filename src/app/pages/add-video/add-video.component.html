@@ -1,18 +1,19 @@
 <div class="wrapper">
 
+  <mat-label>Insert Video Title</mat-label>
   <input matInput type="text" [(ngModel)]="title">
 
   <input type="file" class="file-input"
-         (change)="onFileSelected($event)" #fileUpload>
+         (change)="onFileSelected($event)" #fileUpload accept="video/mp4, video/mov">
 
   <div class="file-upload">
 
-    {{fileName || "No file uploaded yet."}}
+    {{file?.name || "No file uploaded yet."}}
 
     <button mat-mini-fab color="primary" (click)="fileUpload.click()">
       <mat-icon>attach_file</mat-icon>
     </button>
   </div>
 
-  <button (click)="sendVideo()" mat-flat-button color="primary">Import Video</button>
+  <button [disabled]="!(file && title)" (click)="sendVideo()" mat-flat-button color="primary">Send</button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {VideoService} from '../../services/video.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,14 +9,18 @@ import {Router} from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
+  videosList = [];
+
   constructor(
-    private router: Router
+    private router: Router,
+    private videoService: VideoService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.videosList = await this.videoService.getVideosList();
   }
 
-  goToAddVideoPage(){
+  goToAddVideoPage() {
     this.router.navigateByUrl('add_video');
   }
 

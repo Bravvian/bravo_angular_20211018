@@ -1,11 +1,15 @@
-<div class="card" fxFlex style="background-color: black;">
-  <img alt="Comic Image"  class="image-size">
-  <div class="coming-soon-text">
-    <span class="pointer-image">
-      <img src="assets/img/heart_on.png"  alt="Favorite Icon">
-    </span>
-  </div>
-  <div class="container">
-    <p class="title"> Title </p>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle >{{subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <video mat-card-image [src]="item.url.url" controls></video>
+  <!--img mat-card-image [src]="thumbnail" (error)="setDefaultImage()" alt="Thumbnail"-->
+  <mat-card-content>
+    <h3>Category: {{item.category}}</h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="primary" mat-raised-button>LIKE</button>
+    <button color="primary" mat-raised-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
