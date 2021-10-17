@@ -12,6 +12,8 @@ export class CardComponent implements OnInit {
 
   thumbnail = '';
 
+  showTitle = false;
+
   title = '';
   subtitle = '-';
   prevUrl: any;

@@ -1,19 +1,35 @@
 <div class="wrapper">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 
-  <mat-label>Insert Video Title</mat-label>
-  <input matInput type="text" [(ngModel)]="title">
+  <div class="form">
+    <mat-form-field appearance="fill">
+    <mat-label>Insert Video Title</mat-label>
+    <input matInput type="text" [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose Category:</mat-label>
+    <mat-select [(ngModel)]="selectedCategory" matNativeControl>
+      <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
 
-  <input type="file" class="file-input"
-         (change)="onFileSelected($event)" #fileUpload accept="video/mp4, video/mov">
+  <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload accept="video/mp4, video/mov">
 
   <div class="file-upload">
-
     {{file?.name || "No file uploaded yet."}}
-
     <button mat-mini-fab color="primary" (click)="fileUpload.click()">
       <mat-icon>attach_file</mat-icon>
     </button>
+
+    <div *ngIf="fileErrors">
+      <div class="text-danger" *ngFor="let error of fileErrors" >
+        <span>{{error}}</span>
+      </div>
+    </div>
   </div>
 
-  <button [disabled]="!(file && title)" (click)="sendVideo()" mat-flat-button color="primary">Send</button>
+
+  <button [disabled]="!(file && title && selectedCategory && thumbnail)" (click)="sendVideo()" mat-flat-button color="primary">Send</button>
 </div>
+

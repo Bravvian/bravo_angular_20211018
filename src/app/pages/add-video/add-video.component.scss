@@ -5,3 +5,14 @@
 .file-upload{
   margin-top: 10px;
 }
+
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.text-danger{
+  color: red;
+  font-weight: bold;
+}
